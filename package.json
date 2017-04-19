@@ -1,0 +1,40 @@
+{
+  "name": "rzntattoo",
+  "description": "A Vue.js project",
+  "version": "1.0.0",
+  "author": "PNKBizz <bizz.gc@gmail.com>",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.0",
+    "express": "^4.15.0",
+    "jsonfile": "^2.4.0",
+    "mz": "^2.6.0",
+    "normalize.css": "^5.0.0",
+    "vue": "^2.2.1",
+    "vue-lazyload": "^1.0.0-rc12",
+    "vue-resource": "^1.2.1",
+    "vue-router": "^2.3.0",
+    "vuex": "^2.2.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-latest": "^6.0.0",
+    "concurrently": "^3.3.0",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.25.0",
+    "file-loader": "^0.9.0",
+    "node-sass": "^4.5.0",
+    "sass-loader": "^6.0.2",
+    "vue-lazyload": "^1.0.0-rc12",
+    "vue-loader": "^11.0.0",
+    "vue-template-compiler": "^2.2.1",
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.2.0"
+  }
+}
