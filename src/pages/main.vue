@@ -1,16 +1,16 @@
 <template>
     <div class="container-fluid full-height">
         <div class="row justify-content-center align-items-center full-height">
-            <nav class="hidden-sm-up col-xs-10 main-nav--vertical" :class="{'active': isActive}">
+            <nav class="hidden-sm-up col-xs-10 main-nav--vertical" :class="{'active': !isInactive}">
                 <router-link class="main-nav--vertical__item" to="/about">О студии</router-link>
                 <router-link class="main-nav--vertical__item" to="/works">Портфолио</router-link>
             </nav>
             <div class="col-xs-12 col-md-4" id="skull">
-                <div :class="['logo_background', {'active': isActive}]">
+                <div :class="['logo_background', {'inactive': isInactive}]">
                     <span class="since">Since 2009</span>
                 </div>
             </div>
-            <nav class="hidden-sm-down col-md-12 main-nav--horizontal" :class="{'active': isActive}">
+            <nav class="hidden-sm-down col-md-12 main-nav--horizontal" :class="{'active': !isInactive}">
                 <router-link to="/about" class="main-nav--horizontal__item">О студии</router-link>
                 <div class="col-xs-12 col-md-4"></div>
                 <router-link to="/works" class="main-nav--horizontal__item">Портфолио</router-link>
@@ -26,14 +26,13 @@
         name: 'app',
         data () {
             return {
-                isActive: false
+                isInactive: true
             }
         },
         mounted() {
             new Vivus('skull', {type: 'sync', duration: 200, file: '/src/assets/logo_front.svg'}, showLogo.bind(this));
             function showLogo() {
-                console.log(this.isActive);
-                this.isActive = true;
+                this.isInactive = false;
             }
         }
     }
@@ -56,37 +55,48 @@
         height: 100%;
     }
 
+    .no-padding {
+        padding: 0;
+    }
+
     #skull {
         width: 100%;
         display: flex;
         position: relative;
         padding: 0;
         z-index: 1;
+    }
 
-        .logo_background {
-            width: 100%;
-            padding-top: 100%;
-            background: url('/src/assets/logo_front_black.svg') black center center no-repeat;
-            border-radius: 50%;
+    .logo_background {
+        width: 100%;
+        padding-top: 100%;
+        background: url('/src/assets/logo_front_black.svg') black center center no-repeat;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-size: contain;
+        opacity: 1;
+        transition: opacity 1s;
+        display: flex;
+        justify-content: center;
+
+        &--small {
+            width: 50%;
+            padding-top: 50%;
+            background: url('/src/assets/logo_front_black.svg') center center no-repeat;
+            transform: translate(-50%, -46%);
+        }
+
+        .since {
+            color: white;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-size: contain;
+            bottom: 10%;
+        }
+
+        &.inactive {
             opacity: 0;
-            transition: opacity 1s;
-            display: flex;
-            justify-content: center;
-
-            .since {
-                color: white;
-                position: absolute;
-                bottom: 10%;
-            }
-
-            &.active {
-                opacity: 1;
-            }
         }
     }
 
@@ -119,7 +129,7 @@
             align-items: center;
             background-color: black;
             position: absolute;
-            padding: 0 0 0 40px;
+            padding: 0 0 0 50px;
             z-index: 0;
             height: 0;
             opacity: 0;
@@ -127,7 +137,7 @@
             transition-delay: .8s;
 
             &__item {
-                font-size: 4vh;
+                font-size: 3.5vh;
                 padding: 10px;
                 cursor: pointer;
             }
@@ -137,10 +147,15 @@
                 opacity: 1;
             }
 
-            span {
+            .main-nav--horizontal__item {
+                text-decoration: none;
                 margin: 10px;
                 color: white;
                 display: inline-block;
+
+                &:hover {
+                    color: darkred;
+                }
             }
         }
     }

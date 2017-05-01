@@ -1,3 +1,10 @@
 <template>
-    <div>Works</div>
+    <section class="container-fluid">
+        <div>About</div>
+    </section>
 </template>
+
+<script>
+    export default {
+    }
+</script>
