@@ -5,7 +5,7 @@
                 <router-link class="main-nav--vertical__item" to="/about">О студии</router-link>
                 <router-link class="main-nav--vertical__item" to="/works">Портфолио</router-link>
             </nav>
-            <div class="col-xs-12 col-md-4" id="skull">
+            <div class="col-xs-12 col-md-3" id="skull">
                 <div :class="['logo_background', {'inactive': isInactive}]">
                     <span class="since">Since 2009</span>
                 </div>
@@ -15,12 +15,18 @@
                 <div class="col-xs-12 col-md-4"></div>
                 <router-link to="/works" class="main-nav--horizontal__item">Портфолио</router-link>
             </nav>
+            <div class="social-icons">
+                <social-vk></social-vk>
+                <social-inst></social-inst>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
     import Vivus from 'vivus'
+    import vk from '../components/vk.vue'
+    import inst from '../components/inst.vue'
 
     export default {
         name: 'app',
@@ -28,6 +34,10 @@
             return {
                 isInactive: true
             }
+        },
+        components: {
+            'social-vk': vk,
+            'social-inst': inst
         },
         mounted() {
             new Vivus('skull', {type: 'sync', duration: 200, file: '/src/assets/logo_front.svg'}, showLogo.bind(this));
@@ -38,125 +48,4 @@
     }
 </script>
 
-<style lang="scss">
-    @import "/node_modules/normalize.css/normalize.css";
-    @import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
-
-    body, html {
-        height: 100%;
-    }
-
-    body {
-        background: url('/src/assets/logo_back.png');
-        font-family: 'Merriweather', serif;
-    }
-
-    .full-height {
-        height: 100%;
-    }
-
-    .no-padding {
-        padding: 0;
-    }
-
-    #skull {
-        width: 100%;
-        display: flex;
-        position: relative;
-        padding: 0;
-        z-index: 1;
-    }
-
-    .logo_background {
-        width: 100%;
-        padding-top: 100%;
-        background: url('/src/assets/logo_front_black.svg') black center center no-repeat;
-        border-radius: 50%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-size: contain;
-        opacity: 1;
-        transition: opacity 1s;
-        display: flex;
-        justify-content: center;
-
-        &--small {
-            width: 50%;
-            padding-top: 50%;
-            background: url('/src/assets/logo_front_black.svg') center center no-repeat;
-            transform: translate(-50%, -46%);
-        }
-
-        .since {
-            color: white;
-            position: absolute;
-            bottom: 10%;
-        }
-
-        &.inactive {
-            opacity: 0;
-        }
-    }
-
-    .main-nav {
-
-        &--vertical {
-            position: absolute;
-            top: -100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: all .5s;
-            transition-delay: .5s;
-
-            &.active {
-                top: 0;
-            }
-
-            &__item {
-                margin-top: 10px;
-                color: white;
-                background-color: black;
-                font-size: 2em;
-            }
-        }
-
-        &--horizontal {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: black;
-            position: absolute;
-            padding: 0 0 0 50px;
-            z-index: 0;
-            height: 0;
-            opacity: 0;
-            transition: all .5s;
-            transition-delay: .8s;
-
-            &__item {
-                font-size: 3.5vh;
-                padding: 10px;
-                cursor: pointer;
-            }
-
-            &.active {
-                height: 7vh;
-                opacity: 1;
-            }
-
-            .main-nav--horizontal__item {
-                text-decoration: none;
-                margin: 10px;
-                color: white;
-                display: inline-block;
-
-                &:hover {
-                    color: darkred;
-                }
-            }
-        }
-    }
-</style>
+<style lang="scss" src="../scss/main.scss"></style>

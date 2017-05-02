@@ -28,7 +28,7 @@
 
 <style>
   .padding-for-header {
-    padding-top: 13vh;
+    padding-top: 140px;
   }
 
   .main-enter-active, .main-leave-active {

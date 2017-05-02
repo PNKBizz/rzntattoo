@@ -12,7 +12,7 @@
 
 <style lang="scss">
     .app-header {
-        height: 13vh;
+        height: 140px;
         background-color: black;
         color: white;
         overflow: hidden;
