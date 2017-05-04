@@ -13,6 +13,7 @@
 
 <script>
   import Header from './components/header.vue'
+  import { EventBus } from './eventBus'
 
   export default {
       computed: {
@@ -22,6 +23,9 @@
       },
       components: {
           'app-header': Header
+      },
+      created() {
+        this.$http.get('/api/masters').then(response => EventBus.masters = response.body.masters)
       }
   }
 </script>

@@ -1,6 +1,6 @@
 <template>
-    <section class="container-fluid">
-        <div>About</div>
+    <section class="container-fluid full-height">
+        <router-view></router-view>
     </section>
 </template>
 

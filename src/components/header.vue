@@ -8,7 +8,7 @@
             <router-link to="/works" class="app-header__link col-md-4" activeClass="app-header__link--active">Портфолио</router-link>
         </div>
         <div class="row justify-content-center align-items-end">
-            <component :is="$route.fullPath.split('/')[1] + 'Submenu'"></component>
+            <component :is="$route.fullPath.split('/')[1] + 'Submenu'" v-if="$route.fullPath !== '/'"></component>
         </div>
     </header>
 </template>
@@ -44,6 +44,7 @@
             text-decoration: none;
             font-size: 3vmin;
             display: flex;
+            cursor: pointer;
 
             &:first-child {
                 justify-content: flex-end;
