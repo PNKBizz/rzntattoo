@@ -13,6 +13,7 @@
 
 <script>
   import Header from './components/header.vue'
+  import { EventBus } from './eventBus'
 
   export default {
       computed: {
@@ -22,13 +23,16 @@
       },
       components: {
           'app-header': Header
+      },
+      created() {
+        this.$http.get('/api/masters').then(response => EventBus.masters = response.body.masters)
       }
   }
 </script>
 
 <style>
   .padding-for-header {
-    padding-top: 140px;
+    padding: 140px 0 0 0 !important;
   }
 
   .main-enter-active, .main-leave-active {
