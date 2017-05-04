@@ -9,16 +9,18 @@
                 <div :class="['logo_background', {'inactive': isInactive}]">
                     <span class="since">Since 2009</span>
                 </div>
+                <div :class="['social-icons', {'active': !isInactive}]">
+                    <social-vk class="social-icons__icon"></social-vk>
+                    <social-inst class="social-icons__icon"></social-inst>
+                </div>
             </div>
             <nav class="hidden-sm-down col-md-12 main-nav--horizontal" :class="{'active': !isInactive}">
-                <router-link to="/about" class="main-nav--horizontal__item">О студии</router-link>
-                <div class="col-xs-12 col-md-4"></div>
-                <router-link to="/works" class="main-nav--horizontal__item">Портфолио</router-link>
+                <router-link to="/about" class="col-md-4 main-nav--horizontal__item display-flex justify-content-end">
+                    <span>О студии</span>
+                </router-link>
+                <div class="col-md-4"></div>
+                <router-link to="/works" class="col-md-4 main-nav--horizontal__item">Портфолио</router-link>
             </nav>
-            <div class="social-icons">
-                <social-vk></social-vk>
-                <social-inst></social-inst>
-            </div>
         </div>
     </div>
 </template>

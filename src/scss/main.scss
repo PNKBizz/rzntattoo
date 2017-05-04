@@ -18,8 +18,11 @@ body {
   padding: 0;
 }
 
+.display-flex {
+  display: flex;
+}
+
 #skull {
-  width: 100%;
   display: flex;
   position: relative;
   padding: 0;
@@ -114,11 +117,24 @@ body {
       opacity: 1;
     }
   }
+}
 
-  .social-icons {
-    width: 100%;
-    position: fixed;
-    top: 20%;
-    height: 50px;
+.social-icons {
+  width: 100%;
+  position: absolute;
+  top: 34vmin;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity .5s;
+  transition-delay: 1.2s;
+
+  &.active {
+    opacity: 1;
+  }
+
+  &__icon {
+    width: 50px;
   }
 }

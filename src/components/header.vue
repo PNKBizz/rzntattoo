@@ -13,7 +13,7 @@
 <style lang="scss">
     .app-header {
         height: 140px;
-        background-color: black;
+        background: url('/src/assets/logo_back.png') black;
         color: white;
         overflow: hidden;
         position: fixed !important;
