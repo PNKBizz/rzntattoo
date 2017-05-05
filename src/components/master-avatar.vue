@@ -29,6 +29,7 @@
         perspective: 2500px;
         width: 300px;
         height: 300px;
+        margin: 50px;
 
         .master__wrap {
             width: 300px;
@@ -62,6 +63,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
             position: absolute;
             left: 50%;
             top: 0;
