@@ -1,7 +1,7 @@
 <template>
     <header class="container-fluid app-header hidden-sm-down">
         <div class="row justify-content-center align-items-center full-height app-header__main-wrapper">
-            <router-link to="/about/coords" class="app-header__link col-md-4" activeClass="app-header__link--active">О студии</router-link>
+            <router-link to="/about" class="app-header__link col-md-4" activeClass="app-header__link--active">О студии</router-link>
             <router-link to="/" tag="div" class="col-md-4 app-header__link">
                 <div class="logo_background logo_background--small"></div>
             </router-link>

@@ -31,7 +31,7 @@
     import inst from '../components/inst.vue'
 
     export default {
-        name: 'app',
+        name: 'Main',
         data () {
             return {
                 isInactive: true

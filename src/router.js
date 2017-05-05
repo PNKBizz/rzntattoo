@@ -4,6 +4,7 @@ import Main from './pages/main.vue'
 import Coords from './components/coords.vue'
 import Price from './components/price.vue'
 import Masters from './components/masters.vue'
+import Gallery from './components/gallery.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
@@ -14,6 +15,8 @@ let router = new VueRouter({
 		{ path: '/', component: Main },
 		{ path: '/works', component: Works, children: [{
 			path: '', component: Masters
+		}, {
+			path: ':master', component: Gallery, props: true
 		}]},
 		{ path: '/about', component: About, children: [{
 			path: '', redirect: 'coords'

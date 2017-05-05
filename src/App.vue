@@ -4,7 +4,7 @@
       <app-header v-show="isHeaderEnable"></app-header>
     </transition>
     <transition name="main" mode="out-in">
-      <keep-alive>
+      <keep-alive include="Main">
         <router-view :class="{ 'padding-for-header': isHeaderEnable }"></router-view>
       </keep-alive>
     </transition>
