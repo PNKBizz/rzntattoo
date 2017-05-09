@@ -13,33 +13,33 @@
 </template>
 
 <script>
-    export default {
-        name: 'info',
-        data() {
-            return {
-                coord: [54.62896654088406,39.731893822753904]
-            }
-        },
-        mounted() {
-            ymaps.ready(init.bind(this));
-            var myMap,
-                myPlacemark;
+	export default {
+		name: 'info',
+		data() {
+			return {
+				coord: [54.62896654088406, 39.731893822753904]
+			}
+		},
+		mounted() {
+			ymaps.ready(init.bind(this));
+			var myMap,
+				myPlacemark;
 
-            function init(){
-                myMap = new ymaps.Map("yandexMap", {
-                    center: this.coord,
-                    zoom: 18
-                });
+			function init() {
+				myMap = new ymaps.Map("yandexMap", {
+					center: this.coord,
+					zoom: 18
+				});
 
-                myPlacemark = new ymaps.Placemark(this.coord, {
-                    hintContent: 'Тату-студия «РЗН Тату»',
-                    balloonContent: 'Тату-студия «РЗН Тату». +7 (960) 575-29-50'
-                });
+				myPlacemark = new ymaps.Placemark(this.coord, {
+					hintContent: 'Тату-студия «РЗН Тату»',
+					balloonContent: 'Тату-студия «РЗН Тату». +7 (960) 575-29-50'
+				});
 
-                myMap.geoObjects.add(myPlacemark);
-            }
-        }
-    }
+				myMap.geoObjects.add(myPlacemark);
+			}
+		}
+	}
 </script>
 
 <style>

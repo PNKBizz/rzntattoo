@@ -26,28 +26,28 @@
 </template>
 
 <script>
-    import Vivus from 'vivus'
-    import vk from '../components/vk.vue'
-    import inst from '../components/inst.vue'
+	import Vivus from 'vivus'
+	import vk from '../components/vk.vue'
+	import inst from '../components/inst.vue'
 
-    export default {
-        name: 'Main',
-        data () {
-            return {
-                isInactive: true
-            }
-        },
-        components: {
-            'social-vk': vk,
-            'social-inst': inst
-        },
-        mounted() {
-            new Vivus('skull', {type: 'sync', duration: 200, file: '/src/assets/logo_front.svg'}, showLogo.bind(this));
-            function showLogo() {
-                this.isInactive = false;
-            }
-        }
-    }
+	export default {
+		name: 'Main',
+		data () {
+			return {
+				isInactive: true
+			}
+		},
+		components: {
+			'social-vk': vk,
+			'social-inst': inst
+		},
+		mounted() {
+			new Vivus('skull', {type: 'sync', duration: 200, file: '/src/assets/logo_front.svg'}, showLogo.bind(this));
+			function showLogo() {
+				this.isInactive = false;
+			}
+		}
+	}
 </script>
 
 <style lang="scss" src="../scss/main.scss"></style>

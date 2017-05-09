@@ -1,11 +1,15 @@
 <template>
     <header class="container-fluid app-header hidden-sm-down">
         <div class="row justify-content-center align-items-center full-height app-header__main-wrapper">
-            <router-link to="/about" class="app-header__link col-md-4" activeClass="app-header__link--active">О студии</router-link>
+            <router-link to="/about" class="app-header__link col-md-4" activeClass="app-header__link--active">
+                О студии
+            </router-link>
             <router-link to="/" tag="div" class="col-md-4 app-header__link">
                 <div class="logo_background logo_background--small"></div>
             </router-link>
-            <router-link to="/works" class="app-header__link col-md-4" activeClass="app-header__link--active">Портфолио</router-link>
+            <router-link to="/works" class="app-header__link col-md-4" activeClass="app-header__link--active">
+                Портфолио
+            </router-link>
         </div>
         <div class="row justify-content-center align-items-end">
             <component :is="$route.fullPath.split('/')[1] + 'Submenu'" v-if="$route.fullPath !== '/'"></component>
@@ -14,15 +18,15 @@
 </template>
 
 <script>
-    import aboutSubmenu from '../components/about-submenu.vue'
-    import worksSubmenu from '../components/works-submenu.vue'
+	import aboutSubmenu from '../components/about-submenu.vue'
+	import worksSubmenu from '../components/works-submenu.vue'
 
-    export default {
-        components: {
-            aboutSubmenu,
-            worksSubmenu
-        }
-    }
+	export default {
+		components: {
+			aboutSubmenu,
+			worksSubmenu
+		}
+	}
 </script>
 
 <style lang="scss">

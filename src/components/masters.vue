@@ -4,11 +4,13 @@
         <div class="row justify-content-center">
             <div class="col-sm-10 col-lg-6 display-flex flex-wrap masters__wrapper">
                 <router-link tag="div"
-                             :to="'/works/' + master.master"
+                             :to="'/works/master/' + master.name"
                              class="masters__avatar"
-                             v-for="master in masters">
-                    <div class="masters__image" :style="{ backgroundImage: 'url(/src/assets/masters/' + master.master + '.jpg)' }"></div>
-                    <div class="masters__description">{{description[master.master]}}</div>
+                             v-for="master in masters"
+                             :key="master.name">
+                    <div class="masters__image"
+                         :style="{ backgroundImage: 'url(/src/assets/masters/' + master.name + '.jpg)' }"></div>
+                    <div class="masters__description">{{description[master.name].name}}</div>
                 </router-link>
             </div>
         </div>
@@ -16,18 +18,18 @@
 </template>
 
 <script>
-    import { EventBus } from '../eventBus'
+	import {EventBus} from '../eventBus'
 
-    export default {
-        computed: {
-            masters() {
-                return EventBus.masters
-            },
-            description() {
-                return EventBus.description
-            }
-        }
-    }
+	export default {
+		computed: {
+			masters() {
+				return EventBus.masters
+			},
+			description() {
+				return EventBus.description
+			}
+		}
+	}
 </script>
 
 <style lang="scss">

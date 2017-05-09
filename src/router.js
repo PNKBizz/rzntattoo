@@ -16,7 +16,7 @@ let router = new VueRouter({
 		{ path: '/works', component: Works, children: [{
 			path: '', component: Masters
 		}, {
-			path: ':master', component: Gallery, props: true
+			path: 'master/:name', component: Gallery, props: true
 		}]},
 		{ path: '/about', component: About, children: [{
 			path: '', redirect: 'coords'
