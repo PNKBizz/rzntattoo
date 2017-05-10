@@ -1,6 +1,6 @@
 <template>
     <section class="container-fluid full-height">
-        <div class="row full-height master">
+        <div class="row full-height master" :class="{'overflow-hidden': overlayIsActive}">
             <div class="col-12 col-sm-3 master__info">
                 <div class="master__avatar"
                      :style="{ backgroundImage: 'url(/src/assets/masters/' + name + '.jpg)' }"></div>
@@ -14,21 +14,30 @@
             <div class="col-12 col-sm-8 gallery">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-3 gallery-pic no-padding" v-for="pic in master.gallery">
+                        <div class="col-12 col-sm-6 col-md-4 col-xl-3 gallery-pic no-padding"
+                             v-for="pic in master.gallery"
+                             @click="showOverlay(pic)">
                             <img :src="'/src/assets/gallery/' + master.name + '/' + pic" class="gallery-pic__img" alt="">
                         </div>
                     </div>
                 </div>
+                <gallery-overlay :master="master" :picture="currentPic" :is-active="overlayIsActive" :close-callback="closeCallback"></gallery-overlay>
             </div>
         </div>
-
     </section>
 </template>
 
 <script>
 	import {EventBus} from '../eventBus'
+    import galleryOverlay from './gallery-overlay.vue'
 
 	export default {
+	    data() {
+	        return {
+                currentPic: '',
+                overlayIsActive: false
+            }
+        },
 		computed: {
 			master() {
 				return EventBus.masters.filter(master => master.name === this.name)[0] || {};
@@ -37,7 +46,20 @@
 				return EventBus.description
 			}
 		},
-		props: ['name']
+		props: ['name'],
+        components: {
+	        galleryOverlay
+        },
+        methods: {
+            showOverlay(pic) {
+                console.log(pic);
+                this.currentPic = pic;
+                this.overlayIsActive = true;
+            },
+            closeCallback() {
+                this.overlayIsActive = false;
+            }
+        }
 	}
 </script>
 
@@ -103,6 +125,7 @@
             overflow: hidden;
             border: 5px solid rgba(255, 255, 255, .7);
             box-sizing: border-box;
+            cursor: pointer;
 
             &__img {
                 max-width: 100%;
