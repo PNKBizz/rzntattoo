@@ -11,18 +11,18 @@
                     </p>
                 </div>
             </div>
-            <div class="col-12 col-sm-8 gallery">
+            <div class="col-12 col-sm-8 gallery" @click="showOverlay">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12 col-sm-6 col-md-4 col-xl-3 gallery-pic no-padding"
-                             v-for="pic in master.gallery"
-                             @click="showOverlay(pic)">
-                            <img :src="'/src/assets/gallery/' + master.name + '/' + pic" class="gallery-pic__img" alt="">
+                             v-for="picture in master.gallery"
+                             :key="picture">
+                            <img :src="'/src/assets/gallery/' + master.name + '/' + picture" class="gallery-pic__img" alt="" :id="picture">
                         </div>
                     </div>
                 </div>
-                <gallery-overlay :master="master" :picture="currentPic" :is-active="overlayIsActive" :close-callback="closeCallback"></gallery-overlay>
             </div>
+            <gallery-overlay :master="master" :picture="currentPic" v-if="overlayIsActive" :close-callback="closeCallback"></gallery-overlay>
         </div>
     </section>
 </template>
@@ -51,9 +51,9 @@
 	        galleryOverlay
         },
         methods: {
-            showOverlay(pic) {
-                console.log(pic);
-                this.currentPic = pic;
+            showOverlay(event) {
+                console.log(event.target.id);
+                this.currentPic = event.target.id;
                 this.overlayIsActive = true;
             },
             closeCallback() {

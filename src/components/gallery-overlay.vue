@@ -1,11 +1,11 @@
 <template>
-    <section :class="['gallery-overlay', {isActive}]">
+    <section class="gallery-overlay">
         <button type="button" class="close" aria-label="Close" @click="closeCallback">
             <span aria-hidden="true">&times;</span>
         </button>
-        <button type="button" class="prev btn btn-link" @click="closeCallback"></button>
-        <button type="button" class="next btn btn-link" @click="closeCallback"></button>
-        <img :src="'/src/assets/gallery/' + master.name + '/' + picture" class="gallery-overlay__item">
+        <button type="button" class="prev btn btn-link" @click="getPrev"></button>
+        <button type="button" class="next btn btn-link" @click="getNext"></button>
+        <img :src="'/src/assets/gallery/' + master.name + '/' + currentPicture" class="gallery-overlay__item">
     </section>
 </template>
 
@@ -13,7 +13,17 @@
     export default {
         data() {
             return {
-                overlayIsActive: this.isActive
+                overlayIsActive: this.isActive,
+                currentPicture: this.picture,
+                currentIndex: null
+            }
+        },
+        methods: {
+            getPrev() {
+                this.currentPicture = this.master.gallery[--this.currentIndex]
+            },
+            getNext() {
+                this.currentPicture = this.master.gallery[++this.currentIndex]
             }
         },
         props: {
@@ -21,6 +31,9 @@
             picture: String,
             master: Object,
             closeCallback: Function
+        },
+        created() {
+            this.currentIndex = this.master.gallery.indexOf(this.picture);
         }
     }
 </script>
@@ -34,16 +47,14 @@
         left: 0;
         background-color: rgba(0, 0, 0, .8);
         z-index: 99;
-        display: none;
-
-        &.isActive {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         &__item {
-            height: 80vh;
+            height: 100vh;
+            width: 100vw;
+            object-fit: contain;
         }
 
         button.close {
