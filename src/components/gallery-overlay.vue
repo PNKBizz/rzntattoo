@@ -3,8 +3,8 @@
         <button type="button" class="close" aria-label="Close" @click="closeCallback">
             <span aria-hidden="true">&times;</span>
         </button>
-        <button type="button" class="prev btn btn-link" @click="getPrev"></button>
-        <button type="button" class="next btn btn-link" @click="getNext"></button>
+        <button type="button" class="prev btn btn-link button button-prev" @click="getPrev"></button>
+        <button type="button" class="next btn btn-link button button-next" @click="getNext"></button>
         <img :src="'/src/assets/gallery/' + master.name + '/' + currentPicture" class="gallery-overlay__item">
     </section>
 </template>
@@ -71,29 +71,31 @@
             border-radius: 50%;
         }
 
-        button.prev {
+        .button {
             color: white;
             font-size: 6em;
             position: fixed;
-            left: 5%;
             top: 50%;
             transform: translateY(-50%);
 
-            &:after {
-                content: '\2039';
+            &:focus {
+                box-shadow: none;
             }
-        }
 
-        button.next {
-            color: white;
-            font-size: 6em;
-            position: fixed;
-            right: 5%;
-            top: 50%;
-            transform: translateY(-50%);
+            &-prev {
+                left: 5%;
 
-            &:after {
-                content: '\203A';
+                &:after {
+                    content: '\2039';
+                }
+            }
+
+            &-next {
+                right: 5%;
+
+                &:after {
+                    content: '\203A';
+                }
             }
         }
     }
