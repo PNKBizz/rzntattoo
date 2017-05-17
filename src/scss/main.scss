@@ -32,6 +32,14 @@ body {
   padding: 5px;
 }
 
+.svg-icon {
+  fill: darkred;
+
+  &:hover {
+    fill: darken(darkred, 10);
+  }
+}
+
 #skull {
   display: flex;
   position: relative;
@@ -131,8 +139,9 @@ body {
 
 .social-icons {
   width: 100%;
-  position: absolute;
-  top: 50vmin;
+  position: fixed;
+  bottom: 50px;
+  left: 0;
   height: 50px;
   display: flex;
   justify-content: center;
