@@ -1,11 +1,11 @@
 <template>
     <div class="container-fluid full-height">
         <div class="row justify-content-center align-items-center full-height">
-            <nav class="hidden-sm-up col-xs-10 main-nav--vertical" :class="{'active': !isInactive}">
+            <nav class="hidden-sm-up col-10 main-nav--vertical" :class="{'active': !isInactive}">
                 <router-link class="main-nav--vertical__item" to="/about">О студии</router-link>
                 <router-link class="main-nav--vertical__item" to="/works">Портфолио</router-link>
             </nav>
-            <div class="col-xs-12 col-md-3" id="skull">
+            <div class="col-9 col-md-3" id="skull">
                 <div :class="['logo_background', {'inactive': isInactive}]">
                     <span class="since">Since 2009</span>
                 </div>
