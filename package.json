@@ -24,7 +24,7 @@
     "vue-router": "^2.3.0",
     "vue-touch": "^2.0.0-beta.4",
     "vuex": "^2.2.1",
-    "babel-core": "^6.0.0", //for heroku
+    "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-latest": "^6.0.0",
