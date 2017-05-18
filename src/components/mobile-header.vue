@@ -1,6 +1,7 @@
 <template>
     <header class="mobile-header">
-        <div :class="['mobile-button', {'active': menuIsOpened}]" @click="menuIsOpened = !menuIsOpened">
+        <div class="linkToMain" @click="$router.push('/')"></div>
+        <div :class="['mobile-button', {'active': menuIsOpened}]" @click="toggleMenu">
             <span></span>
             <span></span>
             <span></span>
@@ -14,36 +15,29 @@
                          :to="'/works/master/' + master.name"
                          class="mobile-drawer__link"
                          activeClass="mobile-drawer__link--active">{{description[master.name].name}}</router-link>
-            <div class="mobile-drawer__social-icons">
-                <social-vk class="social-icons__icon"></social-vk>
-                <social-inst class="social-icons__icon"></social-inst>
-            </div>
         </section>
     </header>
 </template>
 
 <script>
     import { EventBus } from '../eventBus'
-    import vk from '../components/vk.vue'
-    import inst from '../components/inst.vue'
 
     export default {
-        data() {
-            return {
-                menuIsOpened: false
-            }
-        },
         computed: {
             masters() {
                 return EventBus.masters
             },
             description() {
                 return EventBus.description
+            },
+            menuIsOpened() {
+                return EventBus.menuIsOpened
             }
         },
-        components: {
-            'social-vk': vk,
-            'social-inst': inst
+        methods: {
+            toggleMenu() {
+                EventBus.menuIsOpened = !EventBus.menuIsOpened;
+            }
         }
     }
 </script>
@@ -56,6 +50,14 @@
         z-index: 999;
         background: url('/src/assets/logo_front_black.svg') black center center no-repeat;
         background-size: 100px;
+
+        .linkToMain {
+            width: 100px;
+            height: 50px;
+            position: fixed;
+            top: 0;
+            left: calc(50% - 50px);
+        }
     }
 
     .mobile-button {
@@ -73,7 +75,7 @@
             background-color: white;
             flex-basis: 2px;
             transform-origin: 0 0;
-            transition: all .5s;
+            transition: all .3s;
         }
 
         &.active {
@@ -96,7 +98,7 @@
         top: 50px;
         left: 0;
         background-color: rgba(0, 0, 0, .8);
-        width: 80vw;
+        width: 100vw;
         height: 100%;
         transform: translateX(-100vw);
         transition: transform .3s;
@@ -126,14 +128,6 @@
         &__masters {
             color: darkred;
             padding-top: 50px;
-        }
-
-        &__social-icons {
-            position: fixed;
-            bottom: 10%;
-            display: flex;
-            align-self: center;
-            justify-content: center;
         }
     }
 </style>

@@ -1,18 +1,20 @@
 <template>
-    <section class="container-fluid full-height no-padding">
+    <v-touch tag="section"
+             class="container-fluid full-height no-padding"
+             @swiperight="onSwipeRight"
+             @swipeleft="onSwipeLeft"
+             :swipe-options="{ direction: 'horizontal', threshold: 100 }"
+             :enabled="{tap: false}">
         <transition name="header" mode="out-in">
             <app-header v-if="isHeaderEnable" class="hidden-sm-down"></app-header>
         </transition>
-        <mobile-header v-if="isHeaderEnable" class="hidden-sm-up"></mobile-header>
-        <div class="mobile-menu__button hidden-sm-up" v-if="isHeaderEnable">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+        <transition name="header" mode="out-in">
+            <mobile-header v-if="isHeaderEnable" class="hidden-sm-up"></mobile-header>
+        </transition>
         <transition name="main" mode="out-in">
             <router-view :class="{ 'padding-for-header': isHeaderEnable }"></router-view>
         </transition>
-    </section>
+    </v-touch>
 </template>
 
 <script>
@@ -30,6 +32,14 @@
 			'app-header': Header,
             'mobile-header': MobileHeader
 		},
+		methods: {
+            onSwipeRight() {
+                EventBus.menuIsOpened = true;
+            },
+            onSwipeLeft() {
+                EventBus.menuIsOpened = false;
+            }
+        },
 		created() {
 			this.$http.get('/api/masters').then(response => EventBus.masters = response.body.masters)
 		}
