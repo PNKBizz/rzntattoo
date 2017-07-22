@@ -1,11 +1,11 @@
 <template>
-    <div class="container-fluid full-height">
+    <div class="container-fluid full-height" v-if="browserSupported">
         <div class="row justify-content-center align-items-center full-height">
-            <nav class="hidden-sm-up col-xs-10 main-nav--vertical" :class="{'active': !isInactive}">
+            <nav class="hidden-sm-up col-10 main-nav--vertical" :class="{'active': !isInactive}">
                 <router-link class="main-nav--vertical__item" to="/about">О студии</router-link>
                 <router-link class="main-nav--vertical__item" to="/works">Портфолио</router-link>
             </nav>
-            <div class="col-xs-12 col-md-3" id="skull">
+            <div class="col-9 col-md-3" id="skull">
                 <div :class="['logo_background', {'inactive': isInactive}]">
                     <span class="since">Since 2009</span>
                 </div>
@@ -23,6 +23,10 @@
             </nav>
         </div>
     </div>
+    <div v-else>
+        Пожалуйста, обновите браузер. Он очень стар... <br>
+        <a href="https://vk.com/rzntatu">Мы ВКонтакте</a>
+    </div>
 </template>
 
 <script>
@@ -34,18 +38,26 @@
 		name: 'Main',
 		data () {
 			return {
-				isInactive: true
+				isInactive: true,
+                browserSupported: false
 			}
 		},
 		components: {
 			'social-vk': vk,
 			'social-inst': inst
 		},
+		created() {
+            if ("foobar"[3] === "b") {
+                this.browserSupported = true;
+            }
+        },
 		mounted() {
-			new Vivus('skull', {type: 'sync', duration: 200, file: '/src/assets/logo_front.svg'}, showLogo.bind(this));
-			function showLogo() {
-				this.isInactive = false;
-			}
+			if (this.browserSupported) {
+                new Vivus('skull', {type: 'sync', duration: 200, file: '/src/assets/logo_front.svg'}, showLogo.bind(this));
+                function showLogo() {
+                    this.isInactive = false;
+                }
+            }
 		}
 	}
 </script>

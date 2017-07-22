@@ -59,7 +59,7 @@
 
         button.close {
             position: fixed;
-            top: 0;
+            top: 50px;
             right: 0;
             color: darkred;
             font-size: 2em;

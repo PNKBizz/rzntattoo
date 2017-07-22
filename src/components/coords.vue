@@ -42,7 +42,7 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
     .content-section__back {
         margin: 0;
     }
@@ -53,5 +53,15 @@
         bottom: 0;
         background-color: rgba(255, 255, 255, .8);
         padding: 50px;
+
+        @media screen and (max-width: 540px) {
+            width: 100%;
+            font-size: 4vmin;
+            padding: 8vmin;
+
+            h2 {
+                font-size: 6vmin;
+            }
+        }
     }
 </style>

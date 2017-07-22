@@ -1,6 +1,6 @@
 <template>
     <section class="container-fluid full-height">
-        <div class="row full-height master" :class="{'overflow-hidden': overlayIsActive}">
+        <div class="row full-height master">
             <div class="col-12 col-sm-3 master__info">
                 <div class="master__avatar"
                      :style="{ backgroundImage: 'url(/src/assets/masters/' + name + '.jpg)' }"></div>

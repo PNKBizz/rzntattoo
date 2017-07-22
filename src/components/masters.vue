@@ -8,7 +8,7 @@
                              class="masters__avatar"
                              v-for="master in masters"
                              :key="master.name">
-                    <div class="masters__image"
+                    <div class="masters__image hidden-sm-down"
                          :style="{ backgroundImage: 'url(/src/assets/masters/' + master.name + '.jpg)' }"></div>
                     <div class="masters__description">{{description[master.name].name}}</div>
                 </router-link>
@@ -50,15 +50,20 @@
 
     .masters__avatar {
         flex-grow: 1;
-        max-width: 31%;
-        min-width: 31%;
-        width: 31%;
-        height: 300px;
-        border: 5px solid white;
+        width: 100%;
+        height: 50px;
         margin: 1%;
         position: relative;
         cursor: pointer;
         overflow: hidden;
+
+        @media screen and (min-width: 540px) {
+            max-width: 31%;
+            min-width: 31%;
+            width: 31%;
+            height: 300px;
+            border: 5px solid white;
+        }
 
         &:hover .masters__image {
             transform: scale(1.2);

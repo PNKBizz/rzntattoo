@@ -1,17 +1,25 @@
 <template>
-    <section class="container-fluid full-height no-padding">
+    <v-touch tag="section"
+             class="container-fluid full-height no-padding"
+             @swiperight="onSwipeRight"
+             @swipeleft="onSwipeLeft"
+             :swipe-options="{ direction: 'horizontal', threshold: 100 }"
+             :enabled="{tap: false}">
         <transition name="header" mode="out-in">
             <app-header v-if="isHeaderEnable" class="hidden-sm-down"></app-header>
         </transition>
-        <div class="mobile-menu__button hidden-sm-up" v-if="isHeaderEnable"></div>
+        <transition name="header" mode="out-in">
+            <mobile-header v-if="isHeaderEnable" class="hidden-sm-up"></mobile-header>
+        </transition>
         <transition name="main" mode="out-in">
             <router-view :class="{ 'padding-for-header': isHeaderEnable }"></router-view>
         </transition>
-    </section>
+    </v-touch>
 </template>
 
 <script>
 	import Header from './components/header.vue'
+	import MobileHeader from './components/mobile-header.vue'
 	import {EventBus} from './eventBus'
 
 	export default {
@@ -21,8 +29,17 @@
 			}
 		},
 		components: {
-			'app-header': Header
+			'app-header': Header,
+            'mobile-header': MobileHeader
 		},
+		methods: {
+            onSwipeRight() {
+                EventBus.menuIsOpened = true;
+            },
+            onSwipeLeft() {
+                EventBus.menuIsOpened = false;
+            }
+        },
 		created() {
 			this.$http.get('/api/masters').then(response => EventBus.masters = response.body.masters)
 		}
@@ -31,21 +48,11 @@
 
 <style lang="scss">
     .padding-for-header {
-        padding: 0 !important;
+        padding: 50px 0 0 0 !important;
 
         @media screen and (min-width: 540px) {
             padding: 140px 0 0 0 !important;
         }
-    }
-
-    .mobile-menu__button {
-        position: fixed;
-        z-index: 99;
-        top: 50px;
-        left: 50px;
-        width: 30px;
-        height: 3px;
-        background-color: white;
     }
 
     .main-enter-active, .main-leave-active {
