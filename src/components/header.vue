@@ -71,11 +71,21 @@
             border-top: 5px solid black;
             flex-grow: 1;
             justify-content: center;
+            flex-wrap: wrap;
+
+            @media screen and (max-width: 768px) {
+                justify-content: space-between;
+                &::after {
+                    content: '';
+                    flex-grow: 100;
+                }
+            }
 
             &-item {
                 padding: 10px 20px;
                 display: inline-block;
                 color: white;
+                white-space: nowrap;
 
                 &:hover, &:focus {
                     text-decoration: none;
