@@ -17,7 +17,7 @@
                         <div class="col-12 col-sm-6 col-md-4 col-xl-3 gallery-pic no-padding"
                              v-for="picture in master.gallery"
                              :key="picture">
-                            <img :src="'/src/assets/gallery/' + master.name + '/' + picture" class="gallery-pic__img" alt="" :id="picture">
+                            <img v-lazy="'/src/assets/gallery/' + master.name + '/' + picture" class="gallery-pic__img" alt="" :id="picture">
                         </div>
                     </div>
                 </div>
@@ -30,6 +30,7 @@
 <script>
 	import {EventBus} from '../eventBus'
     import galleryOverlay from './gallery-overlay.vue'
+    import lazy from '../directives/lazy'
 
 	export default {
 	    data() {
@@ -59,7 +60,8 @@
             closeCallback() {
                 this.overlayIsActive = false;
             }
-        }
+        },
+        directives: { lazy }
 	}
 </script>
 

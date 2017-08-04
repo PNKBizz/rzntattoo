@@ -32,7 +32,8 @@
 <script>
 	import Vivus from 'vivus'
 	import vk from '../components/vk.vue'
-	import inst from '../components/inst.vue'
+    import inst from '../components/inst.vue'
+  	import { EventBus } from '../eventBus'
 
 	export default {
 		name: 'Main',
@@ -47,16 +48,19 @@
 			'social-inst': inst
 		},
 		created() {
-            if ("foobar"[3] === "b") {
+            if ("foobar"[3] === "b") { // проверка на поддержку фич
                 this.browserSupported = true;
             }
         },
 		mounted() {
-			if (this.browserSupported) {
+			if (this.browserSupported && EventBus.siteIsntLoaded) {
                 new Vivus('skull', {type: 'sync', duration: 200, file: '/src/assets/logo_front.svg'}, showLogo.bind(this));
                 function showLogo() {
                     this.isInactive = false;
+                    EventBus.siteIsntLoaded = false;
                 }
+            } else {
+                this.isInactive = false;
             }
 		}
 	}

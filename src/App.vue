@@ -41,7 +41,8 @@
             }
         },
 		created() {
-			this.$http.get('/api/masters').then(response => EventBus.masters = response.body.masters)
+            this.$http.get('/api/masters')
+                .then(response => EventBus.masters = response.body && response.body.masters)
 		}
 	}
 </script>
