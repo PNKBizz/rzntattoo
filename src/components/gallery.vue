@@ -1,17 +1,21 @@
 <template>
-    <section class="container-fluid full-height">
+    <section class="container-fluid full-height mt-md-5 pt-md-5 pt-lg-0">
         <div class="row full-height master">
-            <div class="col-12 col-sm-3 master__info">
-                <div class="master__avatar"
-                     :style="{ backgroundImage: 'url(/src/assets/masters/' + name + '.jpg)' }"></div>
-                <div class="master__description">
-                    <h2>{{description[name].name}}</h2>
-                    <p class="master__description-item">
-                        {{description[name].full}}
-                    </p>
+            <div class="col-12 col-lg-3 master__info">
+                <div class="container-fluid m-0">
+                    <div class="row">
+                        <div class="master__avatar col-12 col-md-4 col-lg-12"
+                            :style="{ backgroundImage: 'url(/src/assets/masters/' + name + '.jpg)' }"></div>
+                        <div class="master__description col-md-8 col-lg-12 mt-4">
+                            <h2>{{description[name].name}}</h2>
+                            <p class="master__description-item hidden-sm-down mt-4">
+                                {{description[name].full}}
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-12 col-sm-8 gallery" @click="showOverlay">
+            <div class="col-12 col-lg-8 gallery" @click="showOverlay">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12 col-sm-6 col-md-4 col-xl-3 gallery-pic no-padding"
@@ -22,7 +26,12 @@
                     </div>
                 </div>
             </div>
-            <gallery-overlay :master="master" :picture="currentPic" v-if="overlayIsActive" :close-callback="closeCallback"></gallery-overlay>
+            <gallery-overlay 
+                :master="master" 
+                :picture="currentPic" 
+                v-if="overlayIsActive" 
+                :close-callback="closeCallback"
+            ></gallery-overlay>
         </div>
     </section>
 </template>
@@ -76,7 +85,6 @@
 
         &__avatar {
             height: 300px;
-            margin: 50px 0;
             background: center center no-repeat;
             background-size: cover;
             border-left: 5px solid rgb(50, 50, 50);
@@ -86,33 +94,14 @@
         }
 
         &__description-item {
-            padding: 20px 50px;
-            margin-top: 50px;
-            border-left: 5px solid darkgray;
-            border-radius: 15px;
             font-size: .9em;
             position: relative;
-            background-color: rgba(200, 200, 200, .5);
-
-            &:after {
-                content: '';
-                position: absolute;
-                right: 0;
-                bottom: 0;
-                top: 20px;
-                left: 20px;
-                background: url('/src/assets/quotes.svg') no-repeat left top;
-                background-size: 20%;
-                fill: darkgray;
-                z-index: -1;
-            }
         }
     }
 
     .gallery {
         display: flex;
         flex-wrap: wrap;
-        margin-top: 50px;
         flex-grow: 1;
         max-width: 100%;
         padding: 0;
