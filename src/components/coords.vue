@@ -44,7 +44,7 @@
 
 <style lang="scss">
     .content-section__back {
-        margin: 0;
+        margin: 0 0 50px;
     }
 
     .content-section__text {
