@@ -71,10 +71,12 @@
             }
         },
         directives: { lazy },
-        updated() {
-            window.pageYOffset = 0;
-            document.documentElement.scrollTop = 0;
-            document.body.scrollTop = 0;
+        watch: {
+            name() {
+                window.pageYOffset = 0;
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+            }    
         }
 	}
 </script>

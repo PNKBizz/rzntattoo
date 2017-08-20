@@ -5,6 +5,7 @@ import Coords from './components/coords.vue'
 import Price from './components/price.vue'
 import Masters from './components/masters.vue'
 import Gallery from './components/gallery.vue'
+import { EventBus } from './eventBus'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
@@ -27,5 +28,9 @@ let router = new VueRouter({
 		}] }
 	]
 });
+
+router.afterEach((to, from) => {
+	EventBus.menuIsOpened = false;
+})
 
 export default router
