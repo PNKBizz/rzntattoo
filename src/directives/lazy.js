@@ -17,7 +17,11 @@ function isInViewport(element) {
 
 function checkEl(el, binding) {
   if (isInViewport(el)) {
-    el.src = binding.value;
+    const image = new Image();
+    image.src = binding.value;
+    image.onload = () => {
+      el.src = image.src;
+    }
   }
 }
 
