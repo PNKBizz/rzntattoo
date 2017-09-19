@@ -48,8 +48,8 @@
         width: 100%;
         height: 50px;
         z-index: 999;
-        background: url('/src/assets/logo_front_black.svg') black center center no-repeat;
-        background-size: 100px;
+        background: url('/src/assets/logo.png') black center center no-repeat;
+        background-size: 80px;
 
         .linkToMain {
             width: 100px;

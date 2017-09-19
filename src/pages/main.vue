@@ -40,7 +40,7 @@
 		data () {
 			return {
 				isInactive: true,
-                browserSupported: false
+                browserSupported: true
 			}
 		},
 		components: {
@@ -54,11 +54,8 @@
         },
 		mounted() {
 			if (this.browserSupported && EventBus.siteIsntLoaded) {
-                new Vivus('skull', {type: 'sync', duration: 200, file: '/src/assets/logo_front.svg'}, showLogo.bind(this));
-                function showLogo() {
-                    this.isInactive = false;
-                    EventBus.siteIsntLoaded = false;
-                }
+                this.isInactive = false;
+                EventBus.siteIsntLoaded = false;
             } else {
                 this.isInactive = false;
             }
