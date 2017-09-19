@@ -11,7 +11,10 @@ app.use(bodyParser.urlencoded({
 
 app.get('/api/masters', function (req, res) {
 	jsonfile.readFile('./src/assets/masters.json', function (err, data) {
-		if (err && process.env.NODE_ENV !== 'production') console.error(err);
+		if (err) {
+			res.status(404);
+			console.error(err);
+		}
 		res.send(data);
 	});
 });
