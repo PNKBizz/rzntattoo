@@ -26,7 +26,7 @@ app.get('/api/update', function (req, res) {
 				return {name: master, gallery: response[i].filter(file => file !== 'master.jpg' && file !== 'thumbs')}
 			});
 			jsonfile.writeFile('./src/assets/masters.json', {masters: toWrite}, function (err) {
-				if (process.env.NODE_ENV !== 'production') console.error(err);
+				console.error(err);
 				res.end();
 			});
 		});
