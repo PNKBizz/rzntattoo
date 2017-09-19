@@ -6,10 +6,10 @@
              :swipe-options="{ direction: 'horizontal', threshold: 100 }"
              :enabled="{tap: false}">
         <transition name="header" mode="out-in">
-            <app-header v-if="isHeaderEnable" class="hidden-sm-down"></app-header>
+            <app-header v-if="isHeaderEnable" class="d-none d-md-block"></app-header>
         </transition>
         <transition name="header" mode="out-in">
-            <mobile-header v-if="isHeaderEnable" class="hidden-sm-up"></mobile-header>
+            <mobile-header v-if="isHeaderEnable" class="d-sm-none"></mobile-header>
         </transition>
         <transition name="main" mode="out-in">
             <router-view :class="{ 'padding-for-header': isHeaderEnable }"></router-view>

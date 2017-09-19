@@ -1,5 +1,5 @@
 <template>
-    <header class="container-fluid app-header hidden-sm-down">
+    <header class="container-fluid app-header d-none d-md-block">
         <div class="row justify-content-center align-items-center full-height app-header__main-wrapper">
             <router-link to="/about" class="app-header__link col-md-4" activeClass="app-header__link--active">
                 О студии

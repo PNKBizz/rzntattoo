@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid full-height" v-if="browserSupported">
         <div class="row justify-content-center align-items-center full-height">
-            <nav class="hidden-sm-up col-10 main-nav--vertical" :class="{'active': !isInactive}">
+            <nav class="d-sm-none col-10 main-nav--vertical" :class="{'active': !isInactive}">
                 <router-link class="main-nav--vertical__item" to="/about">О студии</router-link>
                 <router-link class="main-nav--vertical__item" to="/works">Портфолио</router-link>
             </nav>
@@ -14,7 +14,7 @@
                     <social-inst class="social-icons__icon"></social-inst>
                 </div>
             </div>
-            <nav class="hidden-sm-down col-md-12 main-nav--horizontal" :class="{'active': !isInactive}">
+            <nav class="d-none d-md-flex col-md-12 main-nav--horizontal" :class="{'active': !isInactive}">
                 <router-link to="/about" class="col-md-4 main-nav--horizontal__item display-flex justify-content-end">
                     <span>О студии</span>
                 </router-link>

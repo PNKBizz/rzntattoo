@@ -8,7 +8,7 @@
                             :style="{ backgroundImage: 'url(/src/assets/masters/' + name + '.jpg)' }"></div>
                         <div class="master__description col-md-8 col-lg-12 mt-4">
                             <h2>{{description[name].name}}</h2>
-                            <p class="master__description-item hidden-sm-down mt-4">
+                            <p class="master__description-item d-none d-md-flex mt-4">
                                 {{description[name].full}}
                             </p>
                         </div>
