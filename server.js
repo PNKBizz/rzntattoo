@@ -11,10 +11,7 @@ app.use(bodyParser.urlencoded({
 
 app.get('/api/masters', function (req, res) {
 	jsonfile.readFile('./src/assets/masters.json', function (err, data) {
-		if (err) {
-			res.status(404);
-			console.error(err);
-		}
+		if (err && process.env.NODE_ENV !== 'production') console.error(err);
 		res.send(data);
 	});
 });
@@ -29,7 +26,7 @@ app.get('/api/update', function (req, res) {
 				return {name: master, gallery: response[i].filter(file => file !== 'master.jpg' && file !== 'thumbs')}
 			});
 			jsonfile.writeFile('./src/assets/masters.json', {masters: toWrite}, function (err) {
-				console.error(err);
+				if (process.env.NODE_ENV !== 'production') console.error(err);
 				res.end();
 			});
 		});
