@@ -8,7 +8,7 @@
                              class="masters__avatar"
                              v-for="master in masters"
                              :key="master.name">
-                    <div class="masters__image hidden-sm-down"
+                    <div class="masters__image d-none d-md-flex"
                          :style="{ backgroundImage: 'url(/src/assets/masters/' + master.name + '.jpg)' }"></div>
                     <div class="masters__description">{{description[master.name].name}}</div>
                 </router-link>
