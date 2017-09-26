@@ -1,13 +1,13 @@
 <template>
     <div class="container-fluid full-height" v-if="browserSupported">
-        <div class="row justify-content-center align-items-center full-height">
+        <div class="display-flex justify-content-center align-items-center full-height">
             <nav class="d-sm-none col-10 main-nav--vertical" :class="{'active': !isInactive}">
                 <router-link class="main-nav--vertical__item" to="/about">О студии</router-link>
                 <router-link class="main-nav--vertical__item" to="/works">Портфолио</router-link>
             </nav>
             <div class="col-9 col-md-3" id="skull">
                 <div :class="['logo_background', {'inactive': isInactive}]">
-                    <span class="since">Since 2009</span>
+                    <!-- <span class="since">Since 2009</span> -->
                 </div>
                 <div :class="['social-icons', {'active': !isInactive}]">
                     <social-vk class="social-icons__icon"></social-vk>

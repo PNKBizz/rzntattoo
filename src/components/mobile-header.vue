@@ -49,7 +49,7 @@
         height: 50px;
         z-index: 999;
         background: url('/src/assets/logo.png') black center center no-repeat;
-        background-size: 80px;
+        background-size: 50px;
 
         .linkToMain {
             width: 100px;
