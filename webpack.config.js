@@ -1,3 +1,4 @@
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 var path = require('path')
 var webpack = require('webpack')
 
@@ -38,6 +39,11 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+      new BundleAnalyzerPlugin({
+          analyzerMode: 'static'
+      })
+  ],
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
