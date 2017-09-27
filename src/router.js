@@ -1,10 +1,10 @@
-import About from './pages/about.vue'
-import Works from './pages/works.vue'
+const About = () => import('./pages/about.vue')
+const Works = () => import('./pages/works.vue')
+const Coords = () => import('./components/coords.vue')
+const Price = () => import('./components/price.vue')
+const Masters = () => import('./components/masters.vue')
+const Gallery = () => import('./components/gallery.vue')
 import Main from './pages/main.vue'
-import Coords from './components/coords.vue'
-import Price from './components/price.vue'
-import Masters from './components/masters.vue'
-import Gallery from './components/gallery.vue'
 import { EventBus } from './eventBus'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
