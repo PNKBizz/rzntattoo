@@ -9,7 +9,7 @@
             <app-header v-if="isHeaderEnable" class="d-none d-md-block"></app-header>
         </transition>
         <transition name="header" mode="out-in">
-            <mobile-header v-if="isHeaderEnable" class="d-sm-none"></mobile-header>
+            <mobile-header v-if="isHeaderEnable" class="d-md-none"></mobile-header>
         </transition>
         <transition name="main" mode="out-in">
             <router-view :class="{ 'padding-for-header': isHeaderEnable }"></router-view>
@@ -51,7 +51,7 @@
     .padding-for-header {
         padding: 50px 0 0 0 !important;
 
-        @media screen and (min-width: 540px) {
+        @media screen and (min-width: 768px) {
             padding: 140px 0 0 0 !important;
         }
     }

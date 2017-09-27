@@ -16,14 +16,10 @@
                 </div>
             </div>
             <div class="col-12 col-lg-8 gallery" @click="showOverlay">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-3 gallery-pic no-padding"
-                             v-for="picture in master.gallery"
-                             :key="picture">
-                            <img v-lazy="'/src/assets/gallery/' + master.name + '/' + picture" class="gallery-pic__img" alt="" :id="picture">
-                        </div>
-                    </div>
+                <div class="col-12 col-sm-6 col-md-4 col-xl-3 gallery-pic no-padding"
+                        v-for="picture in master.gallery"
+                        :key="picture">
+                    <img v-lazy="'/src/assets/gallery/' + master.name + '/' + picture" class="gallery-pic__img" alt="" :id="picture">
                 </div>
             </div>
             <gallery-overlay 
@@ -113,13 +109,10 @@
         max-width: 100%;
         padding: 0;
 
-        &:after {
-            content: '';
-            flex-grow: 111111;
-        }
-
         &-pic {
             height: 300px;
+            flex-basis: 300px;
+            flex-grow: 1;
             overflow: hidden;
             border: 5px solid rgba(255, 255, 255, .7);
             box-sizing: border-box;

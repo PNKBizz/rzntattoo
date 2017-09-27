@@ -65,8 +65,8 @@ body {
   justify-content: center;
 
   &--small {
-    width: 200px;
-    height: 200px;
+    width: 140px;
+    height: 140px;
     padding-top: 0;
     background: url('/src/assets/logo.png') center center no-repeat;
     background-size: contain;
@@ -101,8 +101,7 @@ body {
 
     &__item {
       margin-top: 10px;
-      color: white;
-      background-color: black;
+      color: black;
       font-size: 2em;
     }
   }
@@ -113,6 +112,8 @@ body {
     align-items: center;
     background-color: black;
     position: absolute;
+    top: calc(50% - 3.5vh);
+    left: 0;
     z-index: 0;
     height: 0;
     opacity: 0;
