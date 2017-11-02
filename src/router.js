@@ -4,7 +4,7 @@ const Coords = () => import('./components/coords.vue')
 const Price = () => import('./components/price.vue')
 const Masters = () => import('./components/masters.vue')
 const Gallery = () => import('./components/gallery.vue')
-import Main from './pages/main.vue'
+const Main = () => import('./pages/main.vue')
 import { EventBus } from './eventBus'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
