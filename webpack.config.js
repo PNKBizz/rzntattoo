@@ -36,14 +36,22 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       }
     ]
   },
-  plugins: [
-      new BundleAnalyzerPlugin({
-          analyzerMode: 'static'
-      })
-  ],
+  // plugins: [
+  //     new BundleAnalyzerPlugin({
+  //         analyzerMode: 'static'
+  //     })
+  // ],
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'

@@ -20,7 +20,7 @@
 <script>
 	import Header from './components/header.vue'
 	import MobileHeader from './components/mobile-header.vue'
-	import {EventBus} from './eventBus'
+	import { EventBus } from './eventBus'
 
 	export default {
 		computed: {
@@ -47,28 +47,4 @@
 	}
 </script>
 
-<style lang="scss">
-    .padding-for-header {
-        padding: 50px 0 0 0 !important;
-
-        @media screen and (min-width: 768px) {
-            padding: 140px 0 0 0 !important;
-        }
-    }
-
-    .main-enter-active, .main-leave-active {
-        transition: opacity .3s
-    }
-
-    .main-enter, .main-leave-to {
-        opacity: 0;
-    }
-
-    .header-enter-active, .header-leave-active {
-        transition: opacity .3s;
-    }
-
-    .header-enter, .header-leave-to {
-        opacity: 0;
-    }
-</style>
+<style lang="scss" src="./scss/main.scss"></style>
