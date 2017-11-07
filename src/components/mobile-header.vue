@@ -1,13 +1,12 @@
 <template>
     <header class="mobile-header">
         <div class="linkToMain" @click="$router.push('/')"></div>
-        <div class="spinner-master4">
-            <input type="checkbox" id="spinner-form4" />
-            <label for="spinner-form4" class="spinner-spin4" @click="toggleMenu">
+        <div class="spinner-master4" :class="{ 'active': menuIsOpened }">
+            <div class="spinner-spin4" @click="toggleMenu">
                 <div class="spinner4 diagonal part-1"></div>
                 <div class="spinner4 horizontal"></div>
                 <div class="spinner4 diagonal part-2"></div>
-            </label>
+            </div>
         </div>
         <section :class="['mobile-drawer', {'active': menuIsOpened}]">
             <router-link to="/about/coords" class="mobile-drawer__link" activeClass="mobile-drawer__link--active">Как нас найти</router-link>
@@ -67,8 +66,7 @@
 
     .spinner-master4 {position:relative;height:50px;width:50px;transform:scale(0.6);}
 
-    .spinner-master4 input[type=checkbox] {display:none;}
-    .spinner-master4 label {cursor:pointer;position:absolute;z-index:99;height:100%;width:100%;top:10px;left:0;}
+    .spinner-master4 .spinner-spin4 {cursor:pointer;position:absolute;z-index:99;height:100%;width:100%;top:10px;left:0;}
 
     .spinner-master4 .spinner4 {position:absolute;height:5px;width:100%;background-color:#fff;}
 
@@ -76,9 +74,9 @@
     .spinner-master4 .horizontal {position:relative;float:left;margin-top:6px;}
     .spinner-master4 .diagonal.part-2 {position:relative;float:left;margin-top:6px;}
 
-    .spinner-master4 input[type=checkbox]:checked ~ .spinner-spin4 > .horizontal {transform:translate(-100px, 0px);-webkit-transform:translate(-100px, 0px); opacity: 0;}
-    .spinner-master4 input[type=checkbox]:checked ~ .spinner-spin4 > .diagonal.part-1 {transform:rotate(-135deg);-webkit-transform:rotate(-135deg);margin-top:10px;}
-    .spinner-master4 input[type=checkbox]:checked ~ .spinner-spin4 > .diagonal.part-2 {transform:rotate(135deg);-webkit-transform:rotate(135deg);margin-top:-16px;}
+    .spinner-master4.active .spinner-spin4 > .horizontal {transform:translate(-100px, 0px);-webkit-transform:translate(-100px, 0px); opacity: 0;}
+    .spinner-master4.active .spinner-spin4 > .diagonal.part-1 {transform:rotate(-135deg);-webkit-transform:rotate(-135deg);margin-top:10px;}
+    .spinner-master4.active .spinner-spin4 > .diagonal.part-2 {transform:rotate(135deg);-webkit-transform:rotate(135deg);margin-top:-16px;}
 
     .mobile-drawer {
         position: fixed;
