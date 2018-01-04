@@ -1,3 +1,7 @@
 {
-    "extends": ""
+    "extends": ["airbnb", "vue"],
+    "rules": {
+        "linebreak-style": ["error", "windows"],
+        "indent": ["error", 4]
+    }
 }

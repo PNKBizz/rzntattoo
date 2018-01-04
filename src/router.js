@@ -1,3 +1,7 @@
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import { EventBus } from './eventBus'
+
 const About = () => import('./pages/about.vue')
 const Works = () => import('./pages/works.vue')
 const Coords = () => import('./components/coords.vue')
@@ -5,32 +9,39 @@ const Price = () => import('./components/price.vue')
 const Masters = () => import('./components/masters.vue')
 const Gallery = () => import('./components/gallery.vue')
 const Main = () => import('./pages/main.vue')
-import { EventBus } from './eventBus'
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+const Upload = () => import('vue-cloudinary-management')
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
-let router = new VueRouter({
-	routes: [
-		{ path: '/', component: Main },
-		{ path: '/works', component: Works, children: [{
-			path: '', component: Masters
-		}, {
-			path: 'master/:name', component: Gallery, props: true
-		}]},
-		{ path: '/about', component: About, children: [{
-			path: '', redirect: 'coords'
-		}, {
-			path: 'coords', component: Coords
-		},{
-			path: 'price', component: Price
-		}] }
-	]
-});
+const router = new VueRouter({
+    routes: [
+        { path: '/', component: Main },
+        {
+            path: '/works',
+            component: Works,
+            children: [{
+                path: '', component: Masters
+            }, {
+                path: 'master/:name', component: Gallery, props: true
+            }]
+        },
+        {
+            path: '/about',
+            component: About,
+            children: [{
+                path: '', redirect: 'coords'
+            }, {
+                path: 'coords', component: Coords
+            }, {
+                path: 'price', component: Price
+            }]
+        },
+        { path: '/upload', component: Upload, props: { cloudName: 'drwukl5fv', presetName: 'vx0dtg8m' }}
+    ]
+})
 
 router.afterEach((to, from) => {
-	EventBus.menuIsOpened = false;
+    EventBus.menuIsOpened = false
 })
 
 export default router

@@ -33,48 +33,48 @@
 </template>
 
 <script>
-	import {EventBus} from '../eventBus'
-    import galleryOverlay from './gallery-overlay.vue'
-    import lazy from '../directives/lazy'
+import { EventBus } from '../eventBus'
+import galleryOverlay from './gallery-overlay.vue'
+import lazy from '../directives/lazy'
 
-	export default {
-	    data() {
-	        return {
-                currentPic: '',
-                overlayIsActive: false
-            }
-        },
-		computed: {
-			master() {
-				return EventBus.masters.filter(master => master.name === this.name)[0] || {};
-			},
-			description() {
-				return EventBus.description
-			}
-		},
-		props: ['name'],
-        components: {
-	        galleryOverlay
-        },
-        methods: {
-            showOverlay(event) {
-                console.log(event.target.id);
-                this.currentPic = event.target.id;
-                this.overlayIsActive = true;
-            },
-            closeCallback() {
-                this.overlayIsActive = false;
-            }
-        },
-        directives: { lazy },
-        watch: {
-            name() {
-                window.pageYOffset = 0;
-                document.documentElement.scrollTop = 0;
-                document.body.scrollTop = 0;
-            }    
+export default {
+    data () {
+        return {
+            currentPic: '',
+            overlayIsActive: false
         }
-	}
+    },
+    computed: {
+        master () {
+            return EventBus.masters.filter(master => master.name === this.name)[0] || {}
+        },
+        description () {
+            return EventBus.description
+        }
+    },
+    props: ['name'],
+    components: {
+        galleryOverlay
+    },
+    methods: {
+        showOverlay (event) {
+            console.log(event.target.id)
+            this.currentPic = event.target.id
+            this.overlayIsActive = true
+        },
+        closeCallback () {
+            this.overlayIsActive = false
+        }
+    },
+    directives: { lazy },
+    watch: {
+        name () {
+            window.pageYOffset = 0
+            document.documentElement.scrollTop = 0
+            document.body.scrollTop = 0
+        }
+    }
+}
 </script>
 
 <style lang="scss">

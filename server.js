@@ -1,12 +1,20 @@
-const express = require('express'),
-	app = express(),
-	router = require('./router');
+const express = require('express')
+const cors = require('cors')
+const cloudinaryUpload = require('vue-cloudinary-management')
+const router = require('./router')
 
-app.use(express.json());
+const app = express()
+const cloudName = 'drwukl5fv'
+const apiKey = '792578474857178'
 
-app.use('/', router);
+app.use(express.json())
+app.use(cors())
 
-app.use(express.static(__dirname + '/'));
-app.listen(process.env.PORT || 4001, function () {
-	console.log('App listening on port 4001')
-});
+app.use(cloudinaryUpload(cloudName, apiKey))
+app.use('/', router)
+
+app.use(express.static(`${__dirname}/`))
+app.listen(process.env.PORT || 4001, () => {
+    console.log('App listening on port 4001')
+})
+

@@ -23,27 +23,27 @@
 	import { EventBus } from './eventBus'
 
 	export default {
-		computed: {
-			isHeaderEnable() {
-				return this.$route.path !== '/';
-			}
-		},
-		components: {
-			'app-header': Header,
-            'mobile-header': MobileHeader
-		},
-		methods: {
-            onSwipeRight() {
-                EventBus.menuIsOpened = true;
-            },
-            onSwipeLeft() {
-                EventBus.menuIsOpened = false;
-            }
+	    computed: {
+	        isHeaderEnable () {
+	            return this.$route.path !== '/'
+	        }
+	    },
+	    components: {
+	        'app-header': Header,
+        'mobile-header': MobileHeader
+	    },
+	    methods: {
+        onSwipeRight () {
+            EventBus.menuIsOpened = true
         },
-		created() {
-            this.$http.get('/api/masters')
-                .then(response => EventBus.masters = response.body && response.body.masters)
-		}
+        onSwipeLeft () {
+            EventBus.menuIsOpened = false
+        }
+    },
+	    created () {
+        this.$http.get('/api/masters')
+            .then(response => EventBus.masters = response.body && response.body.masters)
+	    }
 	}
 </script>
 
