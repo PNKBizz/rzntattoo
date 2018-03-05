@@ -9,7 +9,7 @@ const Price = () => import('./components/price.vue')
 const Masters = () => import('./components/masters.vue')
 const Gallery = () => import('./components/gallery.vue')
 const Main = () => import('./pages/main.vue')
-const Upload = () => import('vue-cloudinary-management')
+const Upload = () => import('vue-cloudinary-manager')
 
 Vue.use(VueRouter)
 

@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const cloudinaryUpload = require('vue-cloudinary-management')
+const cloudinaryUpload = require('vue-cloudinary-manager')
 const router = require('./router')
 
 const app = express()
