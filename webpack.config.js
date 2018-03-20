@@ -28,7 +28,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                exclude: /node_modules|vue-cloudinary-upload/
+                exclude: /node_modules/
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,

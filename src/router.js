@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { EventBus } from './eventBus'
+import EventBus from './eventBus'
 
 const About = () => import('./pages/about.vue')
 const Works = () => import('./pages/works.vue')
@@ -9,7 +9,6 @@ const Price = () => import('./components/price.vue')
 const Masters = () => import('./components/masters.vue')
 const Gallery = () => import('./components/gallery.vue')
 const Main = () => import('./pages/main.vue')
-const Upload = () => import('vue-cloudinary-manager')
 
 Vue.use(VueRouter)
 
@@ -35,8 +34,7 @@ const router = new VueRouter({
             }, {
                 path: 'price', component: Price
             }]
-        },
-        { path: '/upload', component: Upload, props: { cloudName: 'drwukl5fv', presetName: 'vx0dtg8m' }}
+        }
     ]
 })
 

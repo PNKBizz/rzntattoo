@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { EventBus } from '../eventBus'
+import EventBus from '../eventBus'
 import galleryOverlay from './gallery-overlay.vue'
 import lazy from '../directives/lazy'
 

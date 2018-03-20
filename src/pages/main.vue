@@ -33,7 +33,7 @@
 	import Vivus from 'vivus'
 	import vk from '../components/vk.vue'
     import inst from '../components/inst.vue'
-  	import { EventBus } from '../eventBus'
+  	import EventBus from '../eventBus'
 
 	export default {
 		name: 'Main',

@@ -20,7 +20,7 @@
 <script>
 	import Header from './components/header.vue'
 	import MobileHeader from './components/mobile-header.vue'
-	import { EventBus } from './eventBus'
+	import EventBus from './eventBus'
 
 	export default {
 	    computed: {
