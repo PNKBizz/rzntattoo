@@ -74,7 +74,7 @@
         width: 100%;
         height: 100%;
         background-size: cover;
-        background: center center;
+        background: #fff center center;
         transition: transform .3s;
     }
 
